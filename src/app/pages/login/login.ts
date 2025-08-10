@@ -28,6 +28,7 @@ export class Login {
         next: (res) => {
           if (res.length > 0) {
             alert('Login Successful');
+            localStorage.setItem("userToken",res[0].token)
           } else {
             this.errorMessage = 'Invalid email or password';
           }
