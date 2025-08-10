@@ -2,9 +2,12 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessC
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { UserLoginInterceptor } from './services/user-login-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(withInterceptors([ UserLoginInterceptor])),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes)
